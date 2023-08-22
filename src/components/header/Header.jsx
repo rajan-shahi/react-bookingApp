@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./header.css";
 import { BiSolidBed } from "react-icons/bi";
 import { MdFlightTakeoff } from "react-icons/md";
@@ -7,8 +7,16 @@ import { GrAttraction } from "react-icons/gr";
 import { FaTaxi } from "react-icons/fa";
 import { AiFillCalendar } from "react-icons/ai";
 import { BsFillPersonFill } from "react-icons/bs";
+import { DateRange } from 'react-date-range';
 
 const Header = () => {
+    const [date, setDate] = useState([
+        {
+          startDate: new Date(),
+          endDate: new Date(),
+          key: "selection",
+        },
+      ]);
   return (
     <div className="header">
       <div className="headerContainer">
@@ -41,8 +49,8 @@ const Header = () => {
         </p>
         <button className="headerBtn">Sign in / Register</button>
         <div className="headerSearch">
-          <div className="headerIcon">
-            <BiSolidBed />
+          <div className="headerSearchItem">
+             <span className="headerIcon"> <BiSolidBed /></span>
             <input
               type="text"
               placeholder="Where are you going?"
@@ -50,16 +58,28 @@ const Header = () => {
             />
           </div>
 
-          <div className="headerIcon">
-            <AiFillCalendar />
-           <span className="headerSearchText">date to date</span>
+          <div className="headerSearchItem">
+           <span className="headerIcon"><AiFillCalendar /></span>
+           <span className="headerSearchText">
+            date to date
+           </span>
+           <DateRange
+                    editableDateInputs={true}
+                    onChange={(item) => setDate([item.selection])}
+                    moveRangeOnFirstSelection={false}
+                    ranges={date}
+                    className="date"
+                    minDate={new Date()}
+                  />
           </div>
 
-          <div className="headerIcon">
-            <BsFillPersonFill />
+          <div className="headerSearchItem">
+           <span className="headerIcon"> <BsFillPersonFill /></span> 
             <span className="headerSearchText">2 adults 2 children 1 room</span>
           </div>
-
+          <div className="headerSearchItem">
+            <button className="headerBtn">Search</button>
+            </div>
 
         </div>
       </div>

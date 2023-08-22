@@ -3,6 +3,7 @@
     color: white;
     display: flex;
     justify-content: center;
+    position: relative;
 }
 
 .headerContainer{
@@ -50,8 +51,31 @@
     justify-content: space-around;
     padding: 10px 0px;
     border-radius: 5px;
+    position: absolute;
+    bottom: -25px;
+    width: 100%;
+    max-width: 1024px;
 }
 
 .headerIcon{
   color: lightgray;  
+}
+
+
+.headerSearchItem{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+}
+
+.headerSearchInput{
+    border: none;
+    outline: none;
+}
+
+
+.headerSearchText{
+    color: lightgray;
+    cursor: pointer;
 }
