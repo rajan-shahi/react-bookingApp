@@ -3,6 +3,7 @@ import "./list.css"
 import { format } from "date-fns";
 import { useLocation } from 'react-router-dom'
 import { DateRange } from 'react-date-range';
+import SearchItem from '../../components/searchItem/SearchItem';
 
 const List = () => {
   const location = useLocation()
@@ -33,6 +34,7 @@ const List = () => {
           </div>
           <div className="LsItem">
             <label>Options</label>
+            <div className="LsOptions">
             <div className="LsOptionItem">
               <span className="LsOptionText">
                 Min price <small>Per night</small>
@@ -49,23 +51,34 @@ const List = () => {
               <span className="LsOptionText">
                 Adult 
               </span>
-              <input type="Number" className="LsOptionInput" />
+              <input min={1} type="Number" className="LsOptionInput"  placeholder={options.adult} />
             </div>
             <div className="LsOptionItem">
               <span className="LsOptionText">
                 Children 
               </span>
-              <input type="Number" className="LsOptionInput" />
+              <input min={0} type="Number" className="LsOptionInput" placeholder={options.children}/>
             </div>
             <div className="LsOptionItem">
               <span className="LsOptionText">
               Room
               </span>
-              <input type="Number" className="LsOptionInput" />
+              <input min={1} type="Number" className="LsOptionInput" placeholder={options.room}/>
+            </div>
             </div>
           </div>
+          <button>Search</button>
         </div>
-        <div className="ListResult"></div>
+        <div className="ListResult">
+          <SearchItem/>
+          <SearchItem/>
+          <SearchItem/>
+          <SearchItem/>
+          <SearchItem/>
+          <SearchItem/>
+          <SearchItem/>
+          <SearchItem/>
+        </div>
       </div>
     </div>
    </div>

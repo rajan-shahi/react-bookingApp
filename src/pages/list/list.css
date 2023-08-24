@@ -13,11 +13,13 @@
 
 .ListSearch{
     flex: 1;
-    background-color: yellow;
+    background-color: #febb02;
     margin-bottom: 10px;
     padding: 10px;
     border-radius: 10px;
     position: sticky;
+    top: 10px;
+    height: max-content;
 }
 
 
@@ -53,6 +55,32 @@
    display: flex;
    align-items: center;
    cursor: pointer;
+}
+
+.LsOptionItem{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    color: #555;
+    font-size: 12px;
+}
+
+.LsOptionInput{
+width: 50px;
+}
+
+.LsOptions{
+ padding: 10px;   
+}
+
+.ListSearch>button{
+    padding: 10px;
+    background-color: #0071c2;
+    color: white;
+    border: none;
+    width: 100%;
+    font-weight: 500;
+    cursor: pointer;
 }
 .ListResult{
     flex: 3;
