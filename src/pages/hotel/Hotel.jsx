@@ -3,6 +3,7 @@ import "./hotel.css";
 import { FaLocationArrow } from "react-icons/fa";
 import Navbar from "./../../components/navbar/Navbar";
 import Header from "./../../components/header/Header";
+import MailList from "./../../components/mailList/MailList";
 const Hotel = () => {
   const photos = [
     {
@@ -27,9 +28,10 @@ const Hotel = () => {
   return (
     <div>
       <Navbar />
-      <Header type="list" />
+      <Header type="List" />
       <div className="hotelContainer">
         <div className="hotelWrapper">
+          <button className="bookNow">Reserve or Book Now!</button>
           <h1 className="hotelTitle">Grand Hotel</h1>
           <div className="hetelAddress">
             <FaLocationArrow />
@@ -42,20 +44,15 @@ const Hotel = () => {
             Book a stay over $114 at this property and get a free airport taxi
           </span>
           <div className="hotelImages">
-          {photos.map((photo, i) => (
+            {photos.map((photo, i) => (
               <div className="hotelImgWrapper" key={i}>
-                <img
-               
-                  src={photo.src}
-                  alt=""
-                  className="hotelImg"
-                />
+                <img src={photo.src} alt="" className="hotelImg" />
               </div>
             ))}
           </div>
           <div className="hotelDetails">
             <div className="hotelDetailsTexts">
-            <h1 className="hotelTitle">Stay in the heart of City</h1>
+              <h1 className="hotelTitle">Stay in the heart of City</h1>
               <p className="hotelDesc">
                 Located a 5-minute walk from St. Florian's Gate in Krakow, Tower
                 Street Apartments has accommodations with air conditioning and
@@ -71,7 +68,7 @@ const Hotel = () => {
               </p>
             </div>
             <div className="hotelDetailsPrice">
-            <h1>Perfect for a 9-night stay!</h1>
+              <h1>Perfect for a 9-night stay!</h1>
               <span>
                 Located in the real heart of Krakow, this property has an
                 excellent location score of 9.8!
@@ -83,6 +80,7 @@ const Hotel = () => {
             </div>
           </div>
         </div>
+        <MailList />
       </div>
     </div>
   );
