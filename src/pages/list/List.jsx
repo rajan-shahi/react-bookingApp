@@ -4,7 +4,6 @@ import { format } from "date-fns";
 import { useLocation } from 'react-router-dom'
 import { DateRange } from 'react-date-range';
 import SearchItem from '../../components/searchItem/SearchItem';
-
 const List = () => {
   const location = useLocation()
  const [destination,setDestination] =useState(location.state.destination)
@@ -67,7 +66,9 @@ const List = () => {
             </div>
             </div>
           </div>
+      
           <button>Search</button>
+         
         </div>
         <div className="ListResult">
           <SearchItem/>

@@ -3,6 +3,7 @@ import "./hotel.css";
 import { FaLocationArrow } from "react-icons/fa";
 import { BsFillArrowLeftSquareFill } from "react-icons/bs";
 import { BsFillArrowRightCircleFill } from "react-icons/bs";
+import { AiFillCloseCircle } from "react-icons/ai";
 import Navbar from "./../../components/navbar/Navbar";
 import Header from "./../../components/header/Header";
 import MailList from "./../../components/mailList/MailList";
@@ -35,19 +36,37 @@ const Hotel = () => {
     setSlideNumber(i);
     setOpen(true);
   };
+  
+  const handleMove = (direction) => {
+    let newSlideNumber;
+
+    if (direction === "l") {
+      newSlideNumber = slideNumber === 0 ? 5 : slideNumber - 1;
+    } else {
+      newSlideNumber = slideNumber === 5 ? 0 : slideNumber + 1;
+    }
+
+    setSlideNumber(newSlideNumber)
+  };
   return (
     <div>
       <Navbar />
       <Header type="list" />
       <div className="hotelContainer">
         {open && (
-          <div className="slide">
-   <BsFillArrowLeftSquareFill/>
-   <BsFillArrowRightCircleFill/>
-   <div className="sliderWrapper">
-   <img src={photos[slideNumber].src} alt="" className="sliderImg" />
-   </div>
-   <BsFillArrowRightCircleFill/>
+          <div className="slider">
+            <span className="close" onClick={() => setOpen(false)}>
+              <AiFillCloseCircle />
+            </span>
+            <span className="arrow" onClick={() => handleMove("l")}>
+              <BsFillArrowLeftSquareFill />
+            </span>
+            <div className="sliderWrapper">
+              <img src={photos[slideNumber].src} alt="" className="sliderImg" />
+              <span className="arrow" onClick={() => handleMove("r")}>
+                <BsFillArrowRightCircleFill />
+              </span>
+            </div>
           </div>
         )}
         <div className="hotelWrapper">
@@ -67,7 +86,7 @@ const Hotel = () => {
             {photos.map((photo, i) => (
               <div className="hotelImgWrapper" key={i}>
                 <img
-                  onClick={()=>handleOpen(i)}
+                  onClick={() => handleOpen(i)}
                   src={photo.src}
                   alt=""
                   className="hotelImg"
@@ -107,6 +126,7 @@ const Hotel = () => {
         </div>
         <MailList />
         <Footer />
+       
       </div>
     </div>
   );
