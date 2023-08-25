@@ -1,10 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import "./hotel.css";
 import { FaLocationArrow } from "react-icons/fa";
+import { BsFillArrowLeftSquareFill } from "react-icons/bs";
+import { BsFillArrowRightCircleFill } from "react-icons/bs";
 import Navbar from "./../../components/navbar/Navbar";
 import Header from "./../../components/header/Header";
 import MailList from "./../../components/mailList/MailList";
+import Footer from "../../components/footer/Footer";
 const Hotel = () => {
+  const [slideNumber, setSlideNumber] = useState(0);
+  const [open, setOpen] = useState(false);
   const photos = [
     {
       src: "https://cf.bstatic.com/xdata/images/hotel/max1280x900/261707778.jpg?k=56ba0babbcbbfeb3d3e911728831dcbc390ed2cb16c51d88159f82bf751d04c6&o=&hp=1",
@@ -25,11 +30,26 @@ const Hotel = () => {
       src: "https://cf.bstatic.com/xdata/images/hotel/max1280x900/261707389.jpg?k=52156673f9eb6d5d99d3eed9386491a0465ce6f3b995f005ac71abc192dd5827&o=&hp=1",
     },
   ];
+
+  const handleOpen = (i) => {
+    setSlideNumber(i);
+    setOpen(true);
+  };
   return (
     <div>
       <Navbar />
-      <Header type="List" />
+      <Header type="list" />
       <div className="hotelContainer">
+        {open && (
+          <div className="slide">
+   <BsFillArrowLeftSquareFill/>
+   <BsFillArrowRightCircleFill/>
+   <div className="sliderWrapper">
+   <img src={photos[slideNumber].src} alt="" className="sliderImg" />
+   </div>
+   <BsFillArrowRightCircleFill/>
+          </div>
+        )}
         <div className="hotelWrapper">
           <button className="bookNow">Reserve or Book Now!</button>
           <h1 className="hotelTitle">Grand Hotel</h1>
@@ -46,7 +66,12 @@ const Hotel = () => {
           <div className="hotelImages">
             {photos.map((photo, i) => (
               <div className="hotelImgWrapper" key={i}>
-                <img src={photo.src} alt="" className="hotelImg" />
+                <img
+                  onClick={()=>handleOpen(i)}
+                  src={photo.src}
+                  alt=""
+                  className="hotelImg"
+                />
               </div>
             ))}
           </div>
@@ -81,6 +106,7 @@ const Hotel = () => {
           </div>
         </div>
         <MailList />
+        <Footer />
       </div>
     </div>
   );
